@@ -1,17 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Storefront</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f7f7f7;
+    }
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+  </style>
+</head>
 <body>
   <h1>Welcome to the Store</h1>
   <p>Our products:</p>
   <div id="product-list">Loading products...</div>
 
-  <script>
-    fetch('products.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('product-list').innerHTML = html;
-      })
-      .catch(error => {
-        document.getElementById('product-list').innerText = 'Failed to load products.';
-        console.error(error);
-      });
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+    import config from "./site-config.js";
+
+    const app = initializeApp(config.firebaseConfig);
+    const db = getFirestore(app);
+    const siteId = config.siteId;
+
+    async function loadProducts() {
+      try {
+        const snapshot = await getDocs(collection(db, "products", siteId, "items"));
+        const list = document.getElementById("product-list");
+
+        if (snapshot.empty) {
+          list.innerText = "No products found.";
+        } else {
+          list.innerHTML =
+            "<ul>" +
+            snapshot.docs
+              .map((doc) => {
+                const { name, price } = doc.data();
+                return `<li>${name} – €${price}</li>`;
+              })
+              .join("") +
+            "</ul>";
+        }
+      } catch (error) {
+        console.error("Firestore error:", error);
+        document.getElementById("product-list").innerText = "Error loading products.";
+      }
+    }
+
+    loadProducts();
   </script>
 </body>
+</html>
