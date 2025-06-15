@@ -3,30 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Storefront</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 2rem;
-      background: #f7f7f7;
-    }
-    h1 {
-      margin-bottom: 0.5rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-  </style>
+  <title id="store-title">Storefront</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <h1>Welcome to the Store</h1>
-  <p>Our products:</p>
-  <div id="product-list">Loading products...</div>
-
+  <div class="container">
+    <div class="store-header">
+      <div class="store-title" id="store-name">Loading Store...</div>
+      <div class="store-contact" id="store-contact"></div>
+      <div class="divider"></div>
+    </div>
+    <div class="product-list" id="product-list">Loading products...</div>
+  </div>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
     import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
     import config from "./site-config.js";
+
+    // Example: Add store_name and contact to config.js for customization
+    // config.storeName = "My Awesome Store";
+    // config.contact = { email: "info@store.com", phone: "+123456789" };
+
+    // Set store name and contact info if available
+    document.getElementById("store-name").textContent = config.storeName || "Storefront";
+    document.title = config.storeName || "Storefront";
+    if (config.contact) {
+      let contactHtml = "";
+      if (config.contact.email) contactHtml += `Email: <a href='mailto:${config.contact.email}'>${config.contact.email}</a><br>`;
+      if (config.contact.phone) contactHtml += `Phone: <a href='tel:${config.contact.phone}'>${config.contact.phone}</a>`;
+      document.getElementById("store-contact").innerHTML = contactHtml;
+    } else {
+      document.getElementById("store-contact").style.display = "none";
+    }
 
     const app = initializeApp(config.firebaseConfig);
     const db = getFirestore(app);
@@ -38,21 +47,21 @@
         const list = document.getElementById("product-list");
 
         if (snapshot.empty) {
-          list.innerText = "No products found.";
+          list.innerHTML = "<div style='text-align:center;color:#b0b0b0;'>No products found.</div>";
         } else {
           list.innerHTML =
             "<ul>" +
             snapshot.docs
               .map((doc) => {
                 const { name, price } = doc.data();
-                return `<li>${name} – €${price}</li>`;
+                return `<li><span class='product-name'>${name}</span> <span class='product-price'>€${price}</span></li>`;
               })
               .join("") +
             "</ul>";
         }
       } catch (error) {
         console.error("Firestore error:", error);
-        document.getElementById("product-list").innerText = "Error loading products.";
+        document.getElementById("product-list").innerHTML = "<div style='color:#d9534f;text-align:center;'>Error loading products.</div>";
       }
     }
 
