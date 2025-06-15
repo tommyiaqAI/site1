@@ -1,0 +1,41 @@
+name: Deploy to site1
+
+on:
+  push:
+    branches:
+      - main  # or your main branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout core repo
+        uses: actions/checkout@v3
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Clone site1 repo
+        run: |
+          git clone git@github.com:tommyiaqai/site1.git site1
+
+      - name: Copy files to site1
+        run: |
+          rsync -av --delete ./ site1/ \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='README.md'
+
+      - name: Commit and push to site1
+        run: |
+          cd site1
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Deploy from core on $(date)" || echo "No changes to commit"
+          git push origin main
