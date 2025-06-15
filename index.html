@@ -1,0 +1,17 @@
+<body>
+  <h1>Welcome to the Store</h1>
+  <p>Our products:</p>
+  <div id="product-list">Loading products...</div>
+
+  <script>
+    fetch('product.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('product-list').innerHTML = html;
+      })
+      .catch(error => {
+        document.getElementById('product-list').innerText = 'Failed to load products.';
+        console.error(error);
+      });
+  </script>
+</body>
