@@ -1,37 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="store-title">Storefront</title>
+  <title id="store-title">Vetrina</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <header class="main-header">
+    <div class="header-content">
+      <span class="header-title" id="store-name">Caricamento negozio...</span>
+      <button id="cart-header-btn" class="cart-btn">
+        🛒 Carrello (<span id="cart-count">0</span>)
+      </button>
+    </div>
+  </header>
   <div class="container">
     <div class="store-header">
-      <div class="store-title" id="store-name">Loading Store...</div>
-      <div class="store-contact" id="store-contact"></div>
       <div class="divider"></div>
     </div>
-    <div class="product-list" id="product-list">Loading products...</div>
+    <div class="product-list" id="product-list">Caricamento prodotti...</div>
   </div>
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="store-contact" id="store-contact"></div>
+    </div>
+  </footer>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
     import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
     import config from "./site-config.js";
 
-    // Example: Add store_name and contact to config.js for customization
-    // config.storeName = "My Awesome Store";
-    // config.contact = { email: "info@store.com", phone: "+123456789" };
-
-    // Set store name and contact info if available
-    document.getElementById("store-name").textContent = config.storeName || "Storefront";
-    document.title = config.storeName || "Storefront";
+    document.getElementById("store-name").textContent = config.storeName || "Vetrina";
+    document.title = config.storeName || "Vetrina";
     if (config.contact) {
       let contactHtml = "";
       if (config.contact.email) contactHtml += `Email: <a href='mailto:${config.contact.email}'>${config.contact.email}</a><br>`;
-      if (config.contact.phone) contactHtml += `Phone: <a href='tel:${config.contact.phone}'>${config.contact.phone}</a>`;
+      if (config.contact.phone) contactHtml += `Telefono: <a href='tel:${config.contact.phone}'>${config.contact.phone}</a>`;
       document.getElementById("store-contact").innerHTML = contactHtml;
     } else {
       document.getElementById("store-contact").style.display = "none";
@@ -41,31 +47,52 @@
     const db = getFirestore(app);
     const siteId = config.siteId;
 
+    let products = [];
+    let cart = JSON.parse(localStorage.getItem('cart') || '{}');
+
+    function updateCartCount() {
+      const count = Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById("cart-count").textContent = count;
+    }
+
     async function loadProducts() {
       try {
         const snapshot = await getDocs(collection(db, "products", siteId, "items"));
         const list = document.getElementById("product-list");
-
         if (snapshot.empty) {
-          list.innerHTML = "<div style='text-align:center;color:#b0b0b0;'>No products found.</div>";
+          list.innerHTML = "<div style='text-align:center;color:#b0b0b0;'>Nessun prodotto trovato.</div>";
         } else {
+          products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
           list.innerHTML =
             "<ul>" +
-            snapshot.docs
-              .map((doc) => {
-                const { name, price } = doc.data();
-                return `<li><span class='product-name'>${name}</span> <span class='product-price'>€${price}</span></li>`;
-              })
-              .join("") +
+            products.map(product =>
+              `<li><span class='product-name'>${product.name}</span> <span class='product-price'>€${product.price}</span> <button class='add-to-cart-btn' data-id='${product.id}'>Aggiungi al carrello</button></li>`
+            ).join("") +
             "</ul>";
+          // Add to cart event
+          list.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+            btn.onclick = () => {
+              const id = btn.getAttribute('data-id');
+              const product = products.find(p => p.id === id);
+              if (!cart[id]) cart[id] = { ...product, qty: 0 };
+              cart[id].qty++;
+              localStorage.setItem('cart', JSON.stringify(cart));
+              updateCartCount();
+            };
+          });
         }
       } catch (error) {
         console.error("Firestore error:", error);
-        document.getElementById("product-list").innerHTML = "<div style='color:#d9534f;text-align:center;'>Error loading products.</div>";
+        document.getElementById("product-list").innerHTML = "<div style='color:#d9534f;text-align:center;'>Errore nel caricamento dei prodotti.</div>";
       }
     }
 
+    document.getElementById("cart-header-btn").onclick = () => {
+      window.location.href = "checkout.html";
+    };
+
     loadProducts();
+    updateCartCount();
   </script>
 </body>
 </html>

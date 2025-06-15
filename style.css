@@ -8,6 +8,45 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+.main-header {
+  width: 100vw;
+  background: #fff;
+  box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.07);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 2rem;
+}
+.header-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #6c63ff;
+  text-decoration: none;
+}
+.cart-btn {
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.07);
+}
+.cart-btn:hover {
+  background: #5548c8;
+}
+
 .container {
   background: #fff;
   margin-top: 3rem;
@@ -74,11 +113,88 @@ body {
   color: #6c63ff;
   font-size: 1.1rem;
 }
+.add-to-cart-btn {
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-left: 1rem;
+}
+.add-to-cart-btn:hover {
+  background: #5548c8;
+}
+
+/* Checkout page styles */
+.cart-total {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2d3a4b;
+  margin: 2rem 0 1rem 0;
+  text-align: right;
+  width: 100%;
+}
+.place-order-btn {
+  background: #43c97f;
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.8rem 2.2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.07);
+}
+.place-order-btn:hover {
+  background: #2e8c5e;
+}
+.remove-btn {
+  background: #ff6b6b;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.3rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: background 0.2s;
+}
+.remove-btn:hover {
+  background: #c0392b;
+}
+.main-footer {
+  width: 100vw;
+  background: #fff;
+  box-shadow: 0 -2px 12px 0 rgba(31, 38, 135, 0.07);
+  position: relative;
+  bottom: 0;
+  margin-top: 3rem;
+}
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 2rem;
+  color: #6b7a90;
+  font-size: 1rem;
+}
 @media (max-width: 700px) {
   .container {
     padding: 1.2rem 0.5rem 1rem 0.5rem;
   }
-  .store-title {
-    font-size: 2rem;
+  .store-title, .header-title {
+    font-size: 1.3rem;
+  }
+  .header-content {
+    padding: 1rem 0.5rem;
   }
 }
