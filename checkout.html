@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Vetrina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-content">
+      <a href="index.html" class="header-title" id="store-name">Vetrina</a>
+      <button id="back-to-shop" class="cart-btn">Torna al negozio</button>
+    </div>
+  </header>
+  <div class="container">
+    <h2>Checkout</h2>
+    <div id="checkout-items"></div>
+    <div class="cart-total">Totale: €<span id="checkout-total">0.00</span></div>
+    <button id="place-order-btn" class="place-order-btn">Conferma ordine</button>
+  </div>
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="store-contact" id="store-contact"></div>
+    </div>
+  </footer>
+  <script type="module">
+    import config from "./site-config.js";
+    document.getElementById("store-name").textContent = config.storeName || "Vetrina";
+    if (config.contact) {
+      let contactHtml = "";
+      if (config.contact.email) contactHtml += `Email: <a href='mailto:${config.contact.email}'>${config.contact.email}</a><br>`;
+      if (config.contact.phone) contactHtml += `Telefono: <a href='tel:${config.contact.phone}'>${config.contact.phone}</a>`;
+      document.getElementById("store-contact").innerHTML = contactHtml;
+    } else {
+      document.getElementById("store-contact").style.display = "none";
+    }
+    let cart = JSON.parse(localStorage.getItem('cart') || '{}');
+    function renderCheckout() {
+      const checkoutItemsDiv = document.getElementById("checkout-items");
+      const items = Object.values(cart);
+      if (items.length === 0) {
+        checkoutItemsDiv.innerHTML = "<div style='color:#b0b0b0;'>Nessun prodotto nel carrello.</div>";
+        document.getElementById("checkout-total").textContent = "0.00";
+        return;
+      }
+      let total = 0;
+      checkoutItemsDiv.innerHTML =
+        '<ul>' +
+        items.map(item => {
+          total += item.price * item.qty;
+          return `<li><span class='product-name'>${item.name}</span> <span class='product-price'>€${item.price}</span> x ${item.qty} <button class='remove-btn' data-id='${item.id}'>Rimuovi</button></li>`;
+        }).join('') +
+        '</ul>';
+      document.getElementById("checkout-total").textContent = total.toFixed(2);
+      // Remove item event
+      checkoutItemsDiv.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.onclick = (e) => {
+          const id = btn.getAttribute('data-id');
+          delete cart[id];
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCheckout();
+        };
+      });
+    }
+    document.getElementById("place-order-btn").onclick = () => {
+      alert("Grazie per il tuo ordine!");
+      cart = {};
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCheckout();
+    };
+    document.getElementById("back-to-shop").onclick = () => {
+      window.location.href = "index.html";
+    };
+    renderCheckout();
+  </script>
+</body>
+</html>
