@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conferma Ordine - Vetrina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-content">
+      <a href="index.html" class="header-title" id="store-name">Vetrina</a>
+    </div>
+  </header>
+  <div class="container">
+    <h2>Ordine Ricevuto</h2>
+    <div id="payment-instructions"></div>
+  </div>
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="store-contact" id="store-contact"></div>
+    </div>
+  </footer>
+  <script type="module">
+    import config from "./site-config.js";
+    console.log(config);
+    document.getElementById("store-name").textContent = config.storeName || "Vetrina";
+    if (config.contact) {
+      let contactHtml = "";
+      if (config.contact.email) contactHtml += `Email: <a href='mailto:${config.contact.email}'>${config.contact.email}</a><br>`;
+      if (config.contact.phone) contactHtml += `Telefono: <a href='tel:${config.contact.phone}'>${config.contact.phone}</a>`;
+      document.getElementById("store-contact").innerHTML = contactHtml;
+    } else {
+      document.getElementById("store-contact").style.display = "none";
+    }
+    // Get params
+    const params = new URLSearchParams(window.location.search);
+    const nome = params.get('nome') || '';
+    const orderId = params.get('orderId') || '';
+    const iban = config.contact.iban || '---';
+    document.getElementById('payment-instructions').innerHTML = `
+      <p>Grazie <b>${nome}</b>! Il tuo ordine è stato ricevuto.</p>
+      <p>Per favore effettua un bonifico bancario con causale:<br>
+      <b>${nome} - ${orderId}</b><br>
+      all'IBAN:<br>
+      <b>${iban}</b>
+      </p>
+      <p>Riceverai una conferma via email dopo il pagamento.</p>
+    `;
+  </script>
+</body>
+</html>
