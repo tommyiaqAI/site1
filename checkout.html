@@ -18,7 +18,7 @@
     <h2>Checkout</h2>
     <div id="checkout-items"></div>
     <div class="cart-total">Totale: €<span id="checkout-total">0.00</span></div>
-    <button id="place-order-btn" class="place-order-btn">Conferma ordine</button>
+    <button id="proceed-order-btn" class="place-order-btn">Procedi con l'Ordine</button>
   </div>
   <footer class="main-footer">
     <div class="footer-content">
@@ -47,12 +47,17 @@
       }
       let total = 0;
       checkoutItemsDiv.innerHTML =
-        '<ul>' +
         items.map(item => {
           total += item.price * item.qty;
-          return `<li><span class='product-name'>${item.name}</span> <span class='product-price'>€${item.price}</span> x ${item.qty} <button class='remove-btn' data-id='${item.id}'>Rimuovi</button></li>`;
-        }).join('') +
-        '</ul>';
+          return `<div class='checkout-item'>
+            <span class='product-name'>${item.name}</span>
+            <span class='product-price'>€${item.price}</span>
+            <button class='qty-btn minus-btn' data-id='${item.id}' aria-label='Diminuisci quantità'>-</button>
+            <span class='product-qty'>${item.qty}</span>
+            <button class='qty-btn plus-btn' data-id='${item.id}' aria-label='Aumenta quantità'>+</button>
+            <button class='remove-btn' data-id='${item.id}' aria-label='Rimuovi' title='Rimuovi'>×</button>
+          </div>`;
+        }).join('');
       document.getElementById("checkout-total").textContent = total.toFixed(2);
       // Remove item event
       checkoutItemsDiv.querySelectorAll('.remove-btn').forEach(btn => {
@@ -63,12 +68,30 @@
           renderCheckout();
         };
       });
+      // Plus/minus events
+      checkoutItemsDiv.querySelectorAll('.plus-btn').forEach(btn => {
+        btn.onclick = () => {
+          const id = btn.getAttribute('data-id');
+          cart[id].qty++;
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCheckout();
+        };
+      });
+      checkoutItemsDiv.querySelectorAll('.minus-btn').forEach(btn => {
+        btn.onclick = () => {
+          const id = btn.getAttribute('data-id');
+          if (cart[id].qty > 1) {
+            cart[id].qty--;
+          } else {
+            delete cart[id];
+          }
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCheckout();
+        };
+      });
     }
-    document.getElementById("place-order-btn").onclick = () => {
-      alert("Grazie per il tuo ordine!");
-      cart = {};
-      localStorage.setItem('cart', JSON.stringify(cart));
-      renderCheckout();
+    document.getElementById("proceed-order-btn").onclick = () => {
+      window.location.href = "ordine.html";
     };
     document.getElementById("back-to-shop").onclick = () => {
       window.location.href = "index.html";
