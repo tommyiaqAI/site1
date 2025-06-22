@@ -46,20 +46,19 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Cart Button: always visible -->
+      <div class="nav-cart ms-auto me-lg-3 mt-3 mt-lg-0 order-lg-2" id="cart-header-btn" style="cursor:pointer;">
+        <div class="cart-icon order-lg-2 me-2 me-lg-0">
+          <i class="ri-shopping-bag-fill"></i>
+          <div class="item-badge" id="cart-count">0</div>
+        </div>
+      </div>
+      <div class="collapse navbar-collapse order-lg-1" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="info.html">Info</a>
           </li>
         </ul>
-        <!-- Cart Button -->
-        <div class="nav-cart me-lg-3 mt-3 mt-lg-0" id="cart-header-btn" style="cursor:pointer;">
-          <div class="cart-icon order-lg-2 me-2 me-lg-0">
-            <i class="ri-shopping-bag-fill"></i>
-            <div class="item-badge" id="cart-count">0</div>
-          </div>
-        </div>
-        <!-- End Cart Button -->
       </div>
     </div>
   </nav>
