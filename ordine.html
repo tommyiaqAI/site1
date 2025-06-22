@@ -76,15 +76,30 @@
       const telefono = document.getElementById('telefono').value;
       const email = document.getElementById('email').value;
       const orderId = randomCode(8);
+      // Get cart and total
+      const cart = JSON.parse(localStorage.getItem('cart') || '{}');
+      const items = Object.values(cart);
+      let total = 0;
+      const orderedProducts = items.map(item => {
+        total += item.price * item.qty;
+        return {
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          qty: item.qty
+        };
+      });
       // Call Firestore Cloud Function (example, replace with your function URL)
       try {
-        await fetch('https://REGION-PROJECT.cloudfunctions.net/submitOrder', {
+        await fetch('https://us-central1-store-products-ed162.cloudfunctions.net/on_request_example', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ nome, indirizzo, citta, cap, telefono, email, orderId })
+          body: JSON.stringify({ nome, indirizzo, citta, cap, telefono, email, orderId, orderedProducts, total, iban: config.iban, negozioMail: config.contact.email })
         });
       } catch (err) {
-        // Optionally handle error
+        console.error('Errore durante l\'invio dell\'ordine:', err);
+        alert('Si è verificato un errore durante l\'invio dell\'ordine. Riprova più tardi.');
+        return;
       }
       localStorage.setItem('cart', '{}');
       window.location.href = `conferma.html?nome=${encodeURIComponent(nome)}&orderId=${orderId}`;
