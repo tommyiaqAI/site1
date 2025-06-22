@@ -1,9 +1,10 @@
 export default {
   siteId: "site1",
-  storeName: "My Awesome Store 1",
+  storeName: "La Salinella",
   contact: {
-    email: "info@myawesomestore.com",
-    phone: "+123456789"
+    email: "tommyiaq22@gmail.com",
+    phone: "+123456789",
+    iban: "IT60X0542811101000000123456",
   },
   firebaseConfig: {
     apiKey: "AIzaSyAdFeVtKdb5oczNANmYPOeTkf2WbP_ruqg",
