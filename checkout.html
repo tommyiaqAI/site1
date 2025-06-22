@@ -1,64 +1,237 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Checkout - Vetrina</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+  <meta name="description" content="Checkout - Vetrina">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <!-- Main CSS Files -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Font Icons (RemixIcons) -->
+  <link rel="stylesheet" href="fonts/remixicon.css">
+  <!-- Jquery Toast -->
+  <link rel="stylesheet" href="css/jquery.toast.min.css">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 </head>
-<body>
-  <header class="main-header">
-    <div class="header-content">
-      <a href="index.html" class="header-title" id="store-name">Vetrina</a>
-      <button id="back-to-shop" class="cart-btn">Torna al negozio</button>
+<body class="checkout">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light mt-3">
+    <div class="container">
+      <a class="navbar-brand" id="store-name" href="index.html">Vetrina</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </header>
-  <div class="container">
-    <h2>Checkout</h2>
-    <div id="checkout-items"></div>
-    <div class="cart-total">Totale: €<span id="checkout-total">0.00</span></div>
-    <button id="proceed-order-btn" class="place-order-btn">Procedi con l'Ordine</button>
-  </div>
-  <footer class="main-footer">
-    <div class="footer-content">
-      <div class="store-contact" id="store-contact"></div>
+  </nav>
+  <!-- End Navbar -->
+  <main>
+    <section class="top mt-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="bg-white p-3 p-md-5 rounded-md h-100">
+              <form id="shipping-form">
+                <h1 class="h5 text-capitalize mb-3">Dati di contatto e spedizione</h1>
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="email" placeholder="nome@email.com" required>
+                  <label for="email">Email</label>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="nome" placeholder="Nome e Cognome" required>
+                      <label for="nome">Nome e Cognome</label>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="telefono" placeholder="Telefono" required>
+                      <label for="telefono">Telefono</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="indirizzo" placeholder="Indirizzo" required>
+                  <label for="indirizzo">Indirizzo</label>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="citta" placeholder="Città" required>
+                      <label for="citta">Città</label>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="cap" placeholder="CAP" required>
+                      <label for="cap">CAP</label>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-success w-100 p-3">Completa Ordine <i class="ri-check-double-line ri-middle"></i></button>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-5 mt-3 mt-lg-0">
+            <div class="bg-white rounded-md p-3 p-md-5 sticky">
+              <h2 class="h5 mb-4">Riepilogo Carrello</h2>
+              <div id="checkout-items"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <!-- <section class="features mt-5">
+      <div class="container">
+        <div class="row gx-lg-5 text-center bg-white mx-0 py-5 rounded-lg">
+          <div class="col-md-4 mt-3 mt-md-0">
+            <i class="ri-customer-service-line ri-3x text-danger"></i>
+            <h4 class="fs-6 fw-normal">Assistenza 24/7</h4>
+            <div class="small text-muted">Siamo sempre disponibili per te.</div>
+          </div>
+          <div class="col-md-4 mt-3 mt-md-0">
+            <i class="ri-gift-2-line ri-3x text-danger"></i>
+            <h4 class="fs-6 fw-normal">Regali stagionali</h4>
+            <div class="small text-muted">Scopri le nostre offerte speciali.</div>
+          </div>
+          <div class="col-md-4 mt-3 mt-md-0">
+            <i class="ri-shield-star-line ri-3x text-danger"></i>
+            <h4 class="fs-6 fw-normal">Materiali di qualità</h4>
+            <div class="small text-muted">Solo prodotti selezionati.</div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- End Features Section -->
+
+  </main>
+  <!-- Footer -->
+  <footer class="mt-5 mb-lg-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6" id="store-contact">
+          <!-- Contatti dinamici -->
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-lg-0">
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-color-auto text-decoration-none">Politica di spedizione</a></li>
+            <li><a href="#" class="text-color-auto text-decoration-none">Politica di reso</a></li>
+          </ul>
+          <!-- <div class="text-color-auto">
+            <i class="ri-visa-line ri-lg"></i>
+            <i class="ri-paypal-fill ri-lg"></i>
+            <i class="ri-mastercard-fill ri-lg"></i>
+            <i class="ri-bit-coin-fill ri-lg"></i>
+          </div> -->
+        </div>
+      </div>
     </div>
   </footer>
+  <!-- End Footer -->
   <script type="module">
     import config from "./site-config.js";
     document.getElementById("store-name").textContent = config.storeName || "Vetrina";
     if (config.contact) {
       let contactHtml = "";
-      if (config.contact.email) contactHtml += `Email: <a href='mailto:${config.contact.email}'>${config.contact.email}</a><br>`;
-      if (config.contact.phone) contactHtml += `Telefono: <a href='tel:${config.contact.phone}'>${config.contact.phone}</a>`;
+      if (config.contact.phone) contactHtml += `<div class='d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-phone-line'></i></div><a href='tel:${config.contact.phone}' class='text-color-auto text-decoration-none' rel='nofollow'>${config.contact.phone}</a></div>`;
+      if (config.contact.email) contactHtml += `<div class='mt-1 d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-mail-open-line'></i></div><a href='mailto:${config.contact.email}' class='text-color-auto text-decoration-none' rel='nofollow'>${config.contact.email}</a></div>`;
+      if (config.contact.address) contactHtml += `<div class='mt-1 d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-map-2-line'></i></div><address class='d-inline-block mb-0 text-color-auto'>${config.contact.address}</address></div>`;
       document.getElementById("store-contact").innerHTML = contactHtml;
     } else {
       document.getElementById("store-contact").style.display = "none";
     }
     let cart = JSON.parse(localStorage.getItem('cart') || '{}');
+    function calculateShipping(items) {
+      let totalWeight = 0;
+      items.forEach(item => {
+        totalWeight += (item.peso || 1) * item.qty;
+      });
+      if (totalWeight === 0) return 0;
+      return Math.ceil(totalWeight / 20) * 10; // 10€ ogni 20kg (stepwise)
+    }
     function renderCheckout() {
       const checkoutItemsDiv = document.getElementById("checkout-items");
       const items = Object.values(cart);
+      const submitBtn = document.querySelector('#shipping-form button[type="submit"]');
+      const emptyAlertId = 'empty-cart-alert';
+      // Rimuovi eventuale alert precedente
+      let prevAlert = document.getElementById(emptyAlertId);
+      if (prevAlert) prevAlert.remove();
       if (items.length === 0) {
-        checkoutItemsDiv.innerHTML = "<div style='color:#b0b0b0;'>Nessun prodotto nel carrello.</div>";
+        checkoutItemsDiv.innerHTML = "<div class='text-center text-muted'>Nessun prodotto nel carrello.</div>";
         document.getElementById("checkout-total").textContent = "0.00";
+        // Mostra anche spedizione a 0
+        if (document.getElementById("shipping-cost")) {
+          document.getElementById("shipping-cost").textContent = "0.00";
+        }
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.classList.remove('btn-success');
+          submitBtn.classList.add('btn-danger');
+          submitBtn.style.opacity = '0.7';
+          submitBtn.style.cursor = 'not-allowed';
+          // Mostra alert sopra il form (più visibile)
+          let form = document.getElementById('shipping-form');
+          if (form && !document.getElementById(emptyAlertId)) {
+            const alert = document.createElement('div');
+            alert.id = emptyAlertId;
+            alert.className = 'alert alert-warning mb-3';
+            alert.innerHTML = "Aggiungi almeno un prodotto al carrello per completare l'ordine.";
+            form.parentNode.insertBefore(alert, form);
+          }
+        }
         return;
+      } else {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('btn-danger');
+          submitBtn.classList.add('btn-success');
+          submitBtn.style.opacity = '';
+          submitBtn.style.cursor = '';
+        }
       }
-      let total = 0;
+      let subtotal = 0;
       checkoutItemsDiv.innerHTML =
         items.map(item => {
-          total += item.price * item.qty;
-          return `<div class='checkout-item'>
-            <span class='product-name'>${item.name}</span>
-            <span class='product-price'>€${item.price}</span>
-            <button class='qty-btn minus-btn' data-id='${item.id}' aria-label='Diminuisci quantità'>-</button>
-            <span class='product-qty'>${item.qty}</span>
-            <button class='qty-btn plus-btn' data-id='${item.id}' aria-label='Aumenta quantità'>+</button>
-            <button class='remove-btn' data-id='${item.id}' aria-label='Rimuovi' title='Rimuovi'>×</button>
-          </div>`;
+          subtotal += item.price * item.qty;
+          return `<div class='row align-items-center mb-3'><div class='col-3'><div class='product-thumb-wrapper'><img src='${item.image_path || 'img/shoe-800x800-1.png'}' alt='${item.name}' class='img-fluid' /></div></div><div class='col-5'><div class='fw-bold'>${item.name}</div><div class='text-muted small'>€${item.price} x ${item.qty}</div></div><div class='col-4 text-end'><button class='btn btn-outline-secondary btn-sm minus-btn' data-id='${item.id}' aria-label='Diminuisci quantità'>-</button> <span class='mx-1'>${item.qty}</span> <button class='btn btn-outline-secondary btn-sm plus-btn' data-id='${item.id}' aria-label='Aumenta quantità'>+</button> <button class='btn btn-outline-danger btn-sm remove-btn' data-id='${item.id}' aria-label='Rimuovi' title='Rimuovi'>&times;</button></div></div>`;
         }).join('');
-      document.getElementById("checkout-total").textContent = total.toFixed(2);
+      // Calcola spedizione
+      const shipping = calculateShipping(items);
+      // Mostra spedizione e totale
+      let summaryHtml = `<div class='d-flex justify-content-between mt-3'><span>Subtotale</span><span>€${subtotal.toFixed(2)}</span></div>`;
+      summaryHtml += `<div class='d-flex justify-content-between mt-3'><span>Spedizione</span><span id='shipping-cost'>€${shipping.toFixed(2)}</span></div>`;
+      summaryHtml += `<div class='cart-total mt-2'>Totale: <span class='fw-bold text-danger'>€<span id='checkout-total'>${(subtotal+shipping).toFixed(2)}</span></span></div>`;
+      checkoutItemsDiv.innerHTML += summaryHtml;
       // Remove item event
       checkoutItemsDiv.querySelectorAll('.remove-btn').forEach(btn => {
         btn.onclick = (e) => {
@@ -90,13 +263,60 @@
         };
       });
     }
-    document.getElementById("proceed-order-btn").onclick = () => {
-      window.location.href = "ordine.html";
-    };
-    document.getElementById("back-to-shop").onclick = () => {
-      window.location.href = "index.html";
+    function randomCode(length = 8) {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+    document.getElementById("shipping-form").onsubmit = async (e) => {
+      e.preventDefault();
+      const items = Object.values(cart);
+      if (items.length === 0) {
+        // Blocca invio se il carrello è vuoto (ulteriore sicurezza)
+        return;
+      }
+      const nome = document.getElementById('nome').value;
+      const indirizzo = document.getElementById('indirizzo').value;
+      const citta = document.getElementById('citta').value;
+      const cap = document.getElementById('cap').value;
+      const telefono = document.getElementById('telefono').value;
+      const email = document.getElementById('email').value;
+      const orderId = randomCode(8);
+      // Get cart and totals
+      const orderedProducts = items.map(item => {
+        return {
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          qty: item.qty,
+          peso: item.peso
+        };
+      });
+      const shipping = calculateShipping(items);
+      const subtotal = items.reduce((sum, item) => sum + item.price * item.qty, 0);
+      const total = subtotal + shipping;
+      // Call Firestore Cloud Function (example, replace with your function URL)
+      try {
+        await fetch('https://us-central1-store-products-ed162.cloudfunctions.net/on_request_example', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome, indirizzo, citta, cap, telefono, email, orderId, orderedProducts, total, iban: config.contact.iban, negozioMail: config.contact.email })
+        });
+      } catch (err) {
+        console.error('Errore durante l\'invio dell\'ordine:', err);
+        alert('Si è verificato un errore durante l\'invio dell\'ordine. Riprova più tardi.');
+        return;
+      }
+      localStorage.setItem('cart', '{}');
+      window.location.href = `conferma.html?nome=${encodeURIComponent(nome)}&orderId=${orderId}&total=${total.toFixed(2)}&email=${encodeURIComponent(email)}`;
     };
     renderCheckout();
   </script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,76 +1,244 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title id="store-title">Vetrina</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+  <meta name="description" content="Little shopper è un template HTML5 minimal per e-commerce.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <!-- Main CSS Files -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Font Icons (RemixIcons) -->
+  <link rel="stylesheet" href="fonts/remixicon.css">
+  <!-- Jquery Toast -->
+  <link rel="stylesheet" href="css/jquery.toast.min.css">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 </head>
-<body>
-  <header class="main-header">
-    <div class="header-content">
-      <span class="header-title" id="store-name">Caricamento negozio...</span>
-      <button id="cart-header-btn" class="cart-btn">
-        🛒 Carrello (<span id="cart-count">0</span>)
+<body class="shop">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light mt-3">
+    <div class="container">
+      <a class="navbar-brand" id="store-name" href="#">Caricamento negozio...</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+        </ul>
+        <!-- Cart Button -->
+        <div class="nav-cart me-lg-3 mt-3 mt-lg-0" id="cart-header-btn" style="cursor:pointer;">
+          <div class="cart-icon order-lg-2 me-2 me-lg-0">
+            <i class="ri-shopping-bag-fill"></i>
+            <div class="item-badge" id="cart-count">0</div>
+          </div>
+        </div>
+        <!-- End Cart Button -->
+      </div>
     </div>
-  </header>
-  <div class="container">
-    <div class="store-header">
-      <div class="divider"></div>
-    </div>
-    <div class="product-list" id="product-list">Caricamento prodotti...</div>
-  </div>
-  <footer class="main-footer">
-    <div class="footer-content">
-      <div class="store-contact" id="store-contact"></div>
+  </nav>
+  <!-- End Navbar -->
+  <main>
+    <!-- Products List -->
+    <section class="top mt-5 pt-4">
+      <div class="container mt-2 pt-1">
+        <div class="row page-header align-items-center">
+          <div class="col-lg-4 text-center text-lg-start">
+            <div class="small">Prodotti</div>
+          </div>
+          <div class="col-lg-4 text-center mt-3 mb-2 my-lg-0">
+            <h1 class="h3 text-uppercase">Negozio</h1>
+          </div>
+          <div class="col-lg-4">
+            <div class="sort d-flex align-items-center justify-content-center justify-content-lg-end">
+              <div class="me-3 small" id="product-count">&nbsp;</div>
+              <!-- <div>
+                <select class="form-select form-select-sm" aria-label="Sort By" disabled>
+                  <option value="newest" selected>Più recenti</option>
+                </select>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5" id="product-list">
+          <div class="text-center text-muted">Caricamento prodotti...</div>
+        </div>
+      </div>
+    </section>
+    <!-- End Products List -->
+
+    <!-- Discount CTA Section  -->
+    <!-- <section class="discount mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="text-color-auto text-center">
+              <div class="mt-5">Sconto stagionale</div>
+              <h2 class="display-4 fw-bold">Saldi 50% Off</h2>
+              <div>Oltre 300 nuovi articoli!</div>
+              <a href="#" class="mt-4 mb-5 btn btn-warning">Acquista ora <i class="ri-arrow-right-s-line ri-middle"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- End Discount CTA Section  -->
+
+    <!-- Categories Section -->
+    <!-- <section class="categories mt-5">
+      <div class="container">
+        <div class="row mb-3">
+          <div class="col">
+            <h3 class="h4 text-color-auto">Collezioni:</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3">
+            <a href="#" class="text-decoration-none">
+              <div class="bg-primary link-badge-wrapper p-5 rounded-lg text-white position-relative">
+                <span class="small">Made in Italy</span>
+                <div class="h5">Scarpe Hiking</div>
+                <img src="img/category-800x400-1.png" alt="Collection Title" class="img-fluid" />
+                <span class="link-badge">
+                  <i class="ri-arrow-right-s-line"></i>
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- End Categories Section -->
+     
+    <!-- Features Section -->
+    <!-- <section class="features mt-5">
+      <div class="container">
+        <div class="row text-center bg-white mx-0 py-3 rounded-md">
+          <div class="col-md-4">
+            <i class="ri-truck-line ri-2x"></i>
+            <h4 class="fs-6 fw-normal">Spedizione gratuita</h4>
+          </div>
+          <div class="col-md-4">
+            <i class="ri-coupon-4-line ri-2x"></i>
+            <h4 class="fs-6 fw-normal">20% Sconto</h4>
+          </div>
+          <div class="col-md-4">
+            <i class="ri-refund-2-line ri-2x"></i>
+            <h4 class="fs-6 fw-normal">7 Giorni per il reso</h4>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- End Features Section -->
+
+
+  </main>
+  <!-- Footer -->
+  <footer class="mt-5 mb-lg-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6" id="store-contact">
+          <!-- Contatti dinamici -->
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-lg-0">
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-color-auto text-decoration-none">Politica di spedizione</a></li>
+            <li><a href="#" class="text-color-auto text-decoration-none">Politica di reso</a></li>
+          </ul>
+          <div class="text-color-auto">
+            <!-- <i class="ri-visa-line ri-lg"></i>
+            <i class="ri-paypal-fill ri-lg"></i>
+            <i class="ri-mastercard-fill ri-lg"></i>
+            <i class="ri-bit-coin-fill ri-lg"></i> -->
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
+  <!-- End Footer -->
+  <!-- Cart Modal -->
+  <div class="modal fade cart-modal" id="cart_modal" tabindex="-1" aria-labelledby="cart_label" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content border-0 rounded-lg">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cart_label">Carrello</h5>
+          <span class="small text-muted ms-2" id="cart-items-count">(0 Articoli)</span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="cart-items-list">
+          <div class="text-center text-muted">Il carrello è vuoto.</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger rounded-pill flex-grow-1" id="checkout-btn">Completa Ordine <i class="ri-check-double-line ri-middle ps-1"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Cart Modal -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
     import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
     import config from "./site-config.js";
-
+    // Set store name and contact
     document.getElementById("store-name").textContent = config.storeName || "Vetrina";
     document.title = config.storeName || "Vetrina";
     if (config.contact) {
       let contactHtml = "";
-      if (config.contact.email) contactHtml += `Email: <a href='mailto:${config.contact.email}'>${config.contact.email}</a><br>`;
-      if (config.contact.phone) contactHtml += `Telefono: <a href='tel:${config.contact.phone}'>${config.contact.phone}</a>`;
+      if (config.contact.phone) contactHtml += `<div class='d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-phone-line'></i></div><a href='tel:${config.contact.phone}' class='text-color-auto text-decoration-none' rel='nofollow'>${config.contact.phone}</a></div>`;
+      if (config.contact.email) contactHtml += `<div class='mt-1 d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-mail-open-line'></i></div><a href='mailto:${config.contact.email}' class='text-color-auto text-decoration-none' rel='nofollow'>${config.contact.email}</a></div>`;
+      if (config.contact.address) contactHtml += `<div class='mt-1 d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-map-2-line'></i></div><address class='d-inline-block mb-0 text-color-auto'>${config.contact.address}</address></div>`;
       document.getElementById("store-contact").innerHTML = contactHtml;
     } else {
       document.getElementById("store-contact").style.display = "none";
     }
-
+    // Firestore setup
     const app = initializeApp(config.firebaseConfig);
     const db = getFirestore(app);
     const siteId = config.siteId;
-
     let products = [];
     let cart = JSON.parse(localStorage.getItem('cart') || '{}');
-
     function updateCartCount() {
       const count = Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
       document.getElementById("cart-count").textContent = count;
+      document.getElementById("cart-items-count").textContent = `(${count} Articoli)`;
     }
-
+    function renderProductCard(product) {
+      return `<div class='col-md-4 mb-4'><div class='product-card bg-white'><div class='card-body p-4'><div class='actions d-flex justify-content-end'><div class='add-to-card mx-2' style='cursor:pointer;' data-id='${product.id}' title='Aggiungi al carrello'><i class='ri-shopping-bag-fill'></i><svg height='32' width='32'><circle class='circle' cx='16' cy='16' r='14' stroke='black' stroke-width='2' fill-opacity='0' /></svg></div></div><div class='card-image px-5 py-3 px-md-0 py-md-0 px-lg-5 py-lg-3'><img src='${product.image_path || 'img/shoe-800x800-1.png'}' alt='${product.name}' class='img-fluid' /></div><div class='pt-4 text-center position-relative'><div class='card-label'><div class='card-title h5 text-capitalize'>${product.name}</div><div class='card-price text-danger'>€${product.price}</div></div><div class='card-desc text-muted small fw-light mt-3 text-truncate'>${product.description || ''}</div></div></div></div></div>`;
+    }
     async function loadProducts() {
       try {
         const snapshot = await getDocs(collection(db, "products", siteId, "items"));
         const list = document.getElementById("product-list");
         if (snapshot.empty) {
-          list.innerHTML = "<div style='text-align:center;color:#b0b0b0;'>Nessun prodotto trovato.</div>";
+          list.innerHTML = "<div class='text-center text-muted'>Nessun prodotto trovato.</div>";
+          document.getElementById("product-count").textContent = "0 risultati";
         } else {
           products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-          list.innerHTML =
-            "<ul>" +
-            products.map(product =>
-              `<li><span class='product-name'>${product.name}</span> <span class='product-price'>€${product.price}</span> <button class='add-to-cart-btn' data-id='${product.id}'>Aggiungi al carrello</button></li>`
-            ).join("") +
-            "</ul>";
+          list.innerHTML = products.map(renderProductCard).join("");
+          document.getElementById("product-count").textContent = `Mostrati ${products.length} prodotti`;
           // Add to cart event
-          list.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+          list.querySelectorAll('.add-to-card').forEach(btn => {
             btn.onclick = () => {
               const id = btn.getAttribute('data-id');
               const product = products.find(p => p.id === id);
@@ -78,6 +246,7 @@
               cart[id].qty++;
               localStorage.setItem('cart', JSON.stringify(cart));
               updateCartCount();
+              showToast('Aggiunto al carrello!');
             };
           });
         }
@@ -86,13 +255,49 @@
         document.getElementById("product-list").innerHTML = "<div style='color:#d9534f;text-align:center;'>Errore nel caricamento dei prodotti.</div>";
       }
     }
-
+    function showToast(msg) {
+      if (window.$ && $.toast) {
+        $.toast({ text: msg, position: 'top-right', loader: false, hideAfter: 2000, bgColor: '#222', textColor: '#fff' });
+      }
+    }
+    // Cart modal logic
+    function renderCart() {
+      const cartList = document.getElementById('cart-items-list');
+      const items = Object.values(cart);
+      if (!items.length) {
+        cartList.innerHTML = "<div class='text-center text-muted'>Il carrello è vuoto.</div>";
+      } else {
+        cartList.innerHTML = items.map(item =>
+          `<div class='row cart-item mb-2'><div class='col-3'><div class='product-thumb-wrapper'><img src='${item.image_path || 'img/shoe-800x800-1.png'}' alt='${item.name}' class='img-fluid' /></div></div><div class='col-9 position-relative pe-4'><div>${item.name}</div><div class='text-muted small'>${item.qty} x €${item.price}</div><div class='close bg-secondary' style='cursor:pointer;' data-id='${item.id}'><i class='ri-close-line'></i></div></div></div>`
+        ).join("");
+        // Remove item event
+        cartList.querySelectorAll('.close').forEach(btn => {
+          btn.onclick = () => {
+            const id = btn.getAttribute('data-id');
+            delete cart[id];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+          };
+        });
+      }
+      updateCartCount();
+    }
     document.getElementById("cart-header-btn").onclick = () => {
+      renderCart();
+      const modal = new bootstrap.Modal(document.getElementById('cart_modal'));
+      modal.show();
+    };
+    document.getElementById("checkout-btn").onclick = () => {
       window.location.href = "checkout.html";
     };
-
     loadProducts();
     updateCartCount();
   </script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.toast.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

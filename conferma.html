@@ -1,35 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Conferma Ordine - Vetrina</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+  <meta name="description" content="Conferma Ordine - Vetrina">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <!-- Main CSS Files -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Font Icons (RemixIcons) -->
+  <link rel="stylesheet" href="fonts/remixicon.css">
+  <!-- Jquery Toast -->
+  <link rel="stylesheet" href="css/jquery.toast.min.css">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 </head>
-<body>
-  <header class="main-header">
-    <div class="header-content">
-      <a href="index.html" class="header-title" id="store-name">Vetrina</a>
+<body class="checkout">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light mt-3">
+    <div class="container">
+      <a class="navbar-brand" id="store-name" href="index.html">Vetrina</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </header>
-  <div class="container">
-    <h2>Ordine Ricevuto</h2>
-    <div id="payment-instructions"></div>
-  </div>
-  <footer class="main-footer">
-    <div class="footer-content">
-      <div class="store-contact" id="store-contact"></div>
+  </nav>
+  <!-- End Navbar -->
+  <main>
+    <section class="top mt-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="bg-white p-3 p-md-5 rounded-md h-100 text-center">
+              <h1 class="h4 mb-4 text-success"><i class="ri-checkbox-circle-line ri-2x"></i> Ordine Ricevuto</h1>
+              <div id="payment-instructions"></div>
+              <a href="index.html" class="btn btn-outline-primary mt-4">Torna alla Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="mt-5 mb-lg-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6" id="store-contact">
+          <!-- Contatti dinamici -->
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-lg-0">
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-color-auto text-decoration-none">Politica di spedizione</a></li>
+            <li><a href="#" class="text-color-auto text-decoration-none">Politica di reso</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </footer>
+  <!-- End Footer -->
   <script type="module">
     import config from "./site-config.js";
-    console.log(config);
     document.getElementById("store-name").textContent = config.storeName || "Vetrina";
     if (config.contact) {
       let contactHtml = "";
-      if (config.contact.email) contactHtml += `Email: <a href='mailto:${config.contact.email}'>${config.contact.email}</a><br>`;
-      if (config.contact.phone) contactHtml += `Telefono: <a href='tel:${config.contact.phone}'>${config.contact.phone}</a>`;
+      if (config.contact.phone) contactHtml += `<div class='d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-phone-line'></i></div><a href='tel:${config.contact.phone}' class='text-color-auto text-decoration-none' rel='nofollow'>${config.contact.phone}</a></div>`;
+      if (config.contact.email) contactHtml += `<div class='mt-1 d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-mail-open-line'></i></div><a href='mailto:${config.contact.email}' class='text-color-auto text-decoration-none' rel='nofollow'>${config.contact.email}</a></div>`;
+      if (config.contact.address) contactHtml += `<div class='mt-1 d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-map-2-line'></i></div><address class='d-inline-block mb-0 text-color-auto'>${config.contact.address}</address></div>`;
       document.getElementById("store-contact").innerHTML = contactHtml;
     } else {
       document.getElementById("store-contact").style.display = "none";
@@ -38,16 +99,21 @@
     const params = new URLSearchParams(window.location.search);
     const nome = params.get('nome') || '';
     const orderId = params.get('orderId') || '';
+    const total = params.get('total') || '';
+    const email = params.get('email') || '';
     const iban = config.contact.iban || '---';
     document.getElementById('payment-instructions').innerHTML = `
       <p>Grazie <b>${nome}</b>! Il tuo ordine è stato ricevuto.</p>
-      <p>Per favore effettua un bonifico bancario con causale:<br>
+      <p>Per favore effettua un bonifico bancario di <b>€${total}</b> con causale:<br>
       <b>${nome} - ${orderId}</b><br>
       all'IBAN:<br>
       <b>${iban}</b>
       </p>
-      <p>Riceverai una conferma via email dopo il pagamento.</p>
+      <p>Riceverai una riepilogo anche via email all'indirizzo <b>${email}</b>.</p>
     `;
   </script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
