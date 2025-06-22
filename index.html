@@ -3,8 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title id="store-title">Vetrina</title>
-  <meta name="description" content="Little shopper è un template HTML5 minimal per e-commerce.">
+  <title id="store-title"></title>
+  <meta id="meta-description" name="description" content="">
+  <script type="module">
+    import config from "./site-config.js";
+    document.getElementById("store-title").textContent = config.storeName || "Vetrina";
+    document.getElementById("meta-description").setAttribute("content", config.description || "Negozio online");
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.css">
@@ -44,7 +49,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            <a class="nav-link active" aria-current="page" href="info.html">Info</a>
           </li>
         </ul>
         <!-- Cart Button -->
