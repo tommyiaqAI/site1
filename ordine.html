@@ -94,7 +94,7 @@
         await fetch('https://us-central1-store-products-ed162.cloudfunctions.net/on_request_example', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ nome, indirizzo, citta, cap, telefono, email, orderId, orderedProducts, total, iban: config.iban, negozioMail: config.contact.email })
+          body: JSON.stringify({ nome, indirizzo, citta, cap, telefono, email, orderId, orderedProducts, total, iban: config.contact.iban, negozioMail: config.contact.email })
         });
       } catch (err) {
         console.error('Errore durante l\'invio dell\'ordine:', err);
