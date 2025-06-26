@@ -39,13 +39,7 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-        </ul>
-      </div>
+
     </div>
   </nav>
   <!-- End Navbar -->
@@ -130,6 +124,7 @@
           <ul class="list-unstyled">
             <li><a href="#" class="text-color-auto text-decoration-none">Politica di spedizione</a></li>
             <li><a href="#" class="text-color-auto text-decoration-none">Politica di reso</a></li>
+            <li><a id="custom-link" href="custom.html" class="text-color-auto text-decoration-none"></a></li>
           </ul>
         </div>
       </div>
@@ -215,12 +210,12 @@
       }
       mapDiv.innerHTML = `<iframe src='${mapUrl}' width='100%' height='400' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>`;
     }
-    // Form: solo demo, nessun invio reale
-    document.getElementById('contact-form').onsubmit = function(e) {
-      e.preventDefault();
-      alert('Messaggio inviato! (demo)');
-      this.reset();
-    };
+
+    const customLink = document.getElementById('custom-link');
+    if (customLink) {
+      customLink.textContent = (config && config.customPageLabel) ? config.customPageLabel : 'Custom';
+      customLink.style.display = '';
+    }
   </script>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
