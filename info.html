@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Info & Contatti - Vetrina</title>
+  <meta name="description" content="Contatti e informazioni negozio">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <!-- Main CSS Files -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Font Icons (RemixIcons) -->
+  <link rel="stylesheet" href="fonts/remixicon.css">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body class="about contact">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light mt-3">
+    <div class="container">
+      <a class="navbar-brand" id="store-name" href="index.html">Vetrina</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <main>
+    <!-- About Section -->
+    <section class="top mt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="bg-white rounded-lg overflow-hidden">
+              <div id="about-image-container"></div>
+              <div class="p-3 p-md-5">
+                <div class="row gx-lg-5">
+                  <div class="col-md-7">
+                    <h3 class="h4 text-color-auto pb-3" id="about-title">Chi siamo</h3>
+                    <div id="about-text"></div>
+                    <div class="social-share-circle mt-4 pb-4" id="about-socials"></div>
+                    <blockquote class="blockquote mt-4" id="about-quote" style="display:none;"></blockquote>
+                    <div id="about-signature" class="mt-3"></div>
+                  </div>
+                  <div class="col-md-5 mt-3 mt-md-0" id="features-col">
+                    <!-- Features will be rendered here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End About Section -->
+
+    <!-- Contatti & Sede Section -->
+    <section class="top mt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="bg-white rounded-lg overflow-hidden">
+              <!-- Google Map -->
+              <div id="map-container"></div>
+              <!-- End Google Map -->
+              <div class="p-3 p-md-5">
+                <div class="row gx-lg-5">
+                  <div class="col-md-6">
+                    <h3 class="h4 text-color-auto pb-3">Contatti &amp; Sede</h3>
+                    <div id="store-contact"></div>
+                  </div>
+                  <div class="col-md-6 mt-3 mt-md-0">
+                    <!-- <form id="contact-form">
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="f_name" placeholder="Nome" required maxlength="50" name="name">
+                        <label for="f_name">Nome</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="f_email" placeholder="nome@email.com" required name="email">
+                        <label for="f_email">Email</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Messaggio" id="f_message" required name="message"></textarea>
+                        <label for="f_message">Messaggio</label>
+                      </div>
+                      <button type="submit" name="submit" class="btn btn-primary">Invia Messaggio</button>
+                    </form> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Contatti & Sede Section -->
+  </main>
+  <!-- Footer -->
+  <footer class="mt-5 mb-lg-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6" id="footer-contact">
+          <!-- Contatti dinamici -->
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-lg-0">
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-color-auto text-decoration-none">Politica di spedizione</a></li>
+            <li><a href="#" class="text-color-auto text-decoration-none">Politica di reso</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+  <script type="module">
+    import config from "./site-config.js";
+    document.getElementById("store-name").textContent = config.storeName || "Vetrina";
+    // About Section
+    function renderAbout() {
+      // Image
+      const aboutImg = config.aboutImage || null;
+      const aboutImgDiv = document.getElementById('about-image-container');
+      if (aboutImg) {
+        aboutImgDiv.innerHTML = `<img src="${aboutImg}" class="img-fluid min-w-100" alt="Chi siamo" />`;
+      } else {
+        aboutImgDiv.innerHTML = '';
+      }
+      // Text
+      document.getElementById('about-text').innerHTML = config.aboutText || '';
+      // Socials
+      const socials = config.socials || [];
+      const socialsDiv = document.getElementById('about-socials');
+      if (socials.length) {
+        socialsDiv.innerHTML = socials.map(s => `<a href="${s.url}" class="me-1" target="_blank" rel="noopener"><i class="ri-${s.icon}-line"></i></a>`).join('');
+      } else {
+        socialsDiv.innerHTML = '';
+      }
+      // Quote
+      if (config.aboutQuote) {
+        document.getElementById('about-quote').style.display = '';
+        document.getElementById('about-quote').innerHTML = `<p><i class="ri-double-quotes-l ri-lg"></i> <span class="text-muted fw-light">${config.aboutQuote}</span></p>`;
+      }
+      // Signature
+      if (config.aboutSignature) {
+        document.getElementById('about-signature').innerHTML = `<img src="${config.aboutSignature}" class="img-signature" alt="Firma" />`;
+      } else if (config.aboutCEO) {
+        document.getElementById('about-signature').innerHTML = `<div><strong>${config.aboutCEO}</strong></div>`;
+      }
+    }
+    renderAbout();
+    // Features
+    function renderFeatures() {
+      const features = config.features || [
+        { icon: 'shield-flash', title: 'Marchi di qualità', text: 'Solo i migliori brand selezionati.' },
+        { icon: 'earth', title: 'Spedizione in tutta Italia', text: 'Consegna rapida e sicura.' },
+        { icon: 'open-arm', title: 'Clienti soddisfatti', text: 'Assistenza e supporto dedicati.' }
+      ];
+      document.getElementById('features-col').innerHTML = features.map(f => `
+        <div class="mb-4">
+          <i class="ri-${f.icon}-line ri-3x text-danger"></i>
+          <h4 class="fs-6 fw-normal mt-2">${f.title}</h4>
+          <div class="small text-muted">${f.text}</div>
+        </div>
+      `).join('');
+    }
+    renderFeatures();
+    // Contatti dinamici
+    function renderContact(targetId) {
+      if (config.contact) {
+        let contactHtml = "";
+        if (config.contact.phone) contactHtml += `<div class='d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-phone-line'></i></div><a href='tel:${config.contact.phone}' class='text-color-auto text-decoration-none' rel='nofollow'>${config.contact.phone}</a></div>`;
+        if (config.contact.email) contactHtml += `<div class='mt-1 d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-mail-open-line'></i></div><a href='mailto:${config.contact.email}' class='text-color-auto text-decoration-none' rel='nofollow'>${config.contact.email}</a></div>`;
+        if (config.contact.address) contactHtml += `<div class='mt-1 d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-map-2-line'></i></div><address class='d-inline-block mb-0 text-color-auto'>${config.contact.address}</address></div>`;
+        document.getElementById(targetId).innerHTML = contactHtml;
+      } else {
+        document.getElementById(targetId).style.display = "none";
+      }
+    }
+    renderContact("store-contact");
+    renderContact("footer-contact");
+    // Mappa dinamica senza API key, usando coordinate se disponibili per zoom
+    if (config.contact && (config.contact.lat && config.contact.lng || config.contact.address)) {
+      const mapDiv = document.getElementById('map-container');
+      let mapUrl = '';
+      if (config.contact.lat && config.contact.lng) {
+        // Embed with coordinates and zoom 16
+        mapUrl = `https://maps.google.com/maps?q=${config.contact.lat},${config.contact.lng}&z=16&output=embed`;
+      } else if (config.contact.address) {
+        // Fallback to address
+        mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(config.contact.address)}&z=16&output=embed`;
+      }
+      mapDiv.innerHTML = `<iframe src='${mapUrl}' width='100%' height='400' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>`;
+    }
+    // Form: solo demo, nessun invio reale
+    document.getElementById('contact-form').onsubmit = function(e) {
+      e.preventDefault();
+      alert('Messaggio inviato! (demo)');
+      this.reset();
+    };
+  </script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

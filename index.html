@@ -3,8 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title id="store-title">Vetrina</title>
-  <meta name="description" content="Little shopper è un template HTML5 minimal per e-commerce.">
+  <title id="store-title"></title>
+  <meta id="meta-description" name="description" content="">
+  <script type="module">
+    import config from "./site-config.js";
+    document.getElementById("store-title").textContent = config.storeName || "Vetrina";
+    document.getElementById("meta-description").setAttribute("content", config.description || "Negozio online");
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.css">
@@ -41,20 +46,19 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Cart Button: always visible -->
+      <div class="nav-cart ms-auto me-lg-3 mt-3 mt-lg-0 order-lg-2" id="cart-header-btn" style="cursor:pointer;">
+        <div class="cart-icon order-lg-2 me-2 me-lg-0">
+          <i class="ri-shopping-bag-fill"></i>
+          <div class="item-badge" id="cart-count">0</div>
+        </div>
+      </div>
+      <div class="collapse navbar-collapse order-lg-1" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            <a class="nav-link active" aria-current="page" href="info.html">Info</a>
           </li>
         </ul>
-        <!-- Cart Button -->
-        <div class="nav-cart me-lg-3 mt-3 mt-lg-0" id="cart-header-btn" style="cursor:pointer;">
-          <div class="cart-icon order-lg-2 me-2 me-lg-0">
-            <i class="ri-shopping-bag-fill"></i>
-            <div class="item-badge" id="cart-count">0</div>
-          </div>
-        </div>
-        <!-- End Cart Button -->
       </div>
     </div>
   </nav>
@@ -216,8 +220,9 @@
     const app = initializeApp(config.firebaseConfig);
     const db = getFirestore(app);
     const siteId = config.siteId;
+    const cartKey = `cart_${siteId}`;
     let products = [];
-    let cart = JSON.parse(localStorage.getItem('cart') || '{}');
+    let cart = JSON.parse(localStorage.getItem(cartKey) || '{}');
     function updateCartCount() {
       const count = Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
       document.getElementById("cart-count").textContent = count;
@@ -244,7 +249,7 @@
               const product = products.find(p => p.id === id);
               if (!cart[id]) cart[id] = { ...product, qty: 0 };
               cart[id].qty++;
-              localStorage.setItem('cart', JSON.stringify(cart));
+              localStorage.setItem(cartKey, JSON.stringify(cart));
               updateCartCount();
               showToast('Aggiunto al carrello!');
             };
@@ -275,7 +280,7 @@
           btn.onclick = () => {
             const id = btn.getAttribute('data-id');
             delete cart[id];
-            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem(cartKey, JSON.stringify(cart));
             updateCartCount();
             renderCart();
           };
