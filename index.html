@@ -52,6 +52,7 @@
           <i class="ri-shopping-bag-fill"></i>
           <div class="item-badge" id="cart-count">0</div>
         </div>
+        <div class="cart-amount order-lg-1 me-lg-2" id="cart-amount">€0.00</div>
       </div>
       <div class="collapse navbar-collapse order-lg-1" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -156,6 +157,12 @@
     </section> -->
     <!-- End Features Section -->
 
+      <!-- Dark Mode Toggler -->
+		<div class="dark-mode-toggle">
+			<input class="toggler toggler-light" id="dm_toggle" type="checkbox"/>
+			<label class="toggler-btn" for="dm_toggle"></label>
+		</div>
+		<!-- End Dark Mode Toggler -->
 
   </main>
   <!-- Footer -->
@@ -169,6 +176,7 @@
           <ul class="list-unstyled">
             <li><a href="#" class="text-color-auto text-decoration-none">Politica di spedizione</a></li>
             <li><a href="#" class="text-color-auto text-decoration-none">Politica di reso</a></li>
+            <li><a id="custom-link" href="custom.html" class="text-color-auto text-decoration-none"></a></li>
           </ul>
           <div class="text-color-auto">
             <!-- <i class="ri-visa-line ri-lg"></i>
@@ -222,14 +230,38 @@
     const siteId = config.siteId;
     const cartKey = `cart_${siteId}`;
     let products = [];
-    let cart = JSON.parse(localStorage.getItem(cartKey) || '{}');
+    let cart = {};
+
+    // Load cart from localStorage and ensure all product data is up to date
+    function loadCart() {
+      const raw = localStorage.getItem(cartKey);
+      cart = {};
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw);
+          // Only keep products that still exist and update their info
+          for (const id in parsed) {
+            const prod = products.find(p => p.id === id);
+            if (prod) {
+              cart[id] = { ...prod, qty: parsed[id].qty };
+            }
+          }
+        } catch (e) {
+          cart = {};
+        }
+      }
+    }
     function updateCartCount() {
       const count = Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
       document.getElementById("cart-count").textContent = count;
       document.getElementById("cart-items-count").textContent = `(${count} Articoli)`;
+      // Update cart total amount
+      let total = Object.values(cart).reduce((sum, item) => sum + (parseFloat(item.price) || 0) * item.qty, 0);
+      const cartAmount = document.getElementById("cart-amount");
+      if (cartAmount) cartAmount.textContent = `€${total.toFixed(2)}`;
     }
     function renderProductCard(product) {
-      return `<div class='col-md-4 mb-4'><div class='product-card bg-white'><div class='card-body p-4'><div class='actions d-flex justify-content-end'><div class='add-to-card mx-2' style='cursor:pointer;' data-id='${product.id}' title='Aggiungi al carrello'><i class='ri-shopping-bag-fill'></i><svg height='32' width='32'><circle class='circle' cx='16' cy='16' r='14' stroke='black' stroke-width='2' fill-opacity='0' /></svg></div></div><div class='card-image px-5 py-3 px-md-0 py-md-0 px-lg-5 py-lg-3'><img src='${product.image_path || 'img/shoe-800x800-1.png'}' alt='${product.name}' class='img-fluid' /></div><div class='pt-4 text-center position-relative'><div class='card-label'><div class='card-title h5 text-capitalize'>${product.name}</div><div class='card-price text-danger'>€${product.price}</div></div><div class='card-desc text-muted small fw-light mt-3 text-truncate'>${product.description || ''}</div></div></div></div></div>`;
+      return `<div class='col-md-4 mb-4'><div class='product-card bg-white'><div class='card-body p-4'><div class='actions d-flex justify-content-end'><div class='add-to-card mx-2' style='cursor:pointer;' data-id='${product.id}' title='Aggiungi al carrello'><i class='ri-shopping-bag-fill'></i><svg height='32' width='32'><circle class='circle' cx='16' cy='16' r='14' stroke='black' stroke-width='2' fill-opacity='0' /></svg></div></div><div class='card-image px-5 py-3 px-md-0 py-md-0 px-lg-5 py-lg-3'><a href='product.html?id=${product.id}' class='product-link'><img src='${product.image_path || 'img/shoe-800x800-1.png'}' alt='${product.name}' class='img-fluid' /></a></div><div class='pt-4 text-center position-relative'><div class='card-label'><a href='product.html?id=${product.id}' class='link-dark text-decoration-none product-link'><div class='card-title h5 text-capitalize'>${product.name}</div></a><div class='card-price text-danger'>€${product.price}</div></div><div class='card-desc text-muted small fw-light mt-3 text-truncate'>${product.description || ''}</div></div></div></div></div>`;
     }
     async function loadProducts() {
       try {
@@ -242,6 +274,8 @@
           products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
           list.innerHTML = products.map(renderProductCard).join("");
           document.getElementById("product-count").textContent = `Mostrati ${products.length} prodotti`;
+          loadCart();
+          updateCartCount();
           // Add to cart event
           list.querySelectorAll('.add-to-card').forEach(btn => {
             btn.onclick = () => {
@@ -296,6 +330,12 @@
     document.getElementById("checkout-btn").onclick = () => {
       window.location.href = "checkout.html";
     };
+    // Set custom link label in footer
+    const customLink = document.getElementById('custom-link');
+    if (customLink) {
+      customLink.textContent = (config && config.customPageLabel) ? config.customPageLabel : 'Custom';
+      customLink.style.display = '';
+    }
     loadProducts();
     updateCartCount();
   </script>

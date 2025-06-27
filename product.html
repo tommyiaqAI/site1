@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Little Shopper | HTML5 E-Commerce Template | Product</title>
+		<meta name="description" content="Little shopper is a clean and minimal HTML5 template for e-commerce websites.">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="css/bootstrap.css">
+
+		<!-- Main CSS Files -->
+		<link rel="stylesheet" href="css/main.css">
+
+		<!-- Font Icons (RemixIcons) -->
+		<link rel="stylesheet" href="fonts/remixicon.css">
+
+		<!-- Jquery Toast -->
+		<link rel="stylesheet" href="css/jquery.toast.min.css">
+
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+		<link rel="manifest" href="img/favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+
+		<!-- Facebook OG Tags -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://ineedui.com/little-shopper/product.html">
+		<meta property="og:title" content="Little Shopper | HTML5 E-Commerce Template">
+		<meta property="og:image" content="https://ineedui.com/little-shopper/img/slider-800x400-1.png">
+		<meta property="og:description" content="Little shopper is a clean and minimal HTML5 template for e-commerce websites.">
+		<meta property="og:site_name" content="Little Shopper">
+		<meta property="og:locale" content="en_US">
+		<!-- Next tags are optional but recommended -->
+		<meta property="og:image:width" content="800">
+		<meta property="og:image:height" content="400">
+
+		<!-- Twitter Card Tags -->
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@site_account">
+		<meta name="twitter:creator" content="@individual_account">
+		<meta name="twitter:url" content="https://ineedui.com/little-shopper/product.html">
+		<meta name="twitter:title" content="Little Shopper | HTML5 E-Commerce Template">
+		<meta name="twitter:description" content="Little shopper is a clean and minimal HTML5 template for e-commerce websites.">
+		<meta name="twitter:image" content="https://ineedui.com/little-shopper/img/slider-800x400-1.png">
+
+		<style>
+  /* Hide all product thumbnails by default, show only via JS if present */
+  .row.mt-3 .product-thumb-wrapper { display: none; }
+</style>
+
+	</head>
+	<body class="product">
+
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-lg navbar-light mt-3">
+			<div class="container">
+				<a class="navbar-brand" id="store-name" href="index.html">Caricamento negozio...</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link" href="info.html">Info</a>
+					</ul>
+
+
+					<!-- Cart Button -->
+					<div class="nav-cart me-lg-3 mt-3 mt-lg-0" data-bs-toggle="modal" data-bs-target="#cart_modal">
+						<div class="cart-icon order-lg-2 me-2 me-lg-0">
+							<i class="ri-shopping-bag-fill"></i>
+							<div class="item-badge">3</div>
+						</div>
+						<div class="cart-amount order-lg-1 me-lg-2">$85.00</div>
+					</div>
+					<!-- End Cart Button -->
+
+					<!-- Search Button -->
+					<div class="nav-search mt-3 mt-lg-0" data-bs-toggle="modal" data-bs-target="#search_modal">
+						<i class="ri-search-line"></i>
+					</div>
+					<!-- End Search Button -->
+				</div>
+			</div>
+		</nav>
+		<!-- End Navbar -->
+
+		<main>
+
+			<!-- Products Details -->
+			<section class="top mt-5 pt-4">
+				<div class="container mt-2 pt-1">
+					<div class="row page-header">
+						<div class="col-12">
+							<div class="bg-white p-3 p-lg-5 rounded-lg">
+								<div class="row">
+									<div class="col-lg-5 pe-lg-5">
+										<div class="product-image-wrapper circle zoom-wrapper" data-src="img/shoe-800x800-1.png">
+											<img src="img/shoe-800x800-1.png" alt="Super Sport Shoes" class="img-fluid" />
+										</div>
+										<div class="row mt-3">
+											<div class="col-4">
+												<div class="product-thumb-wrapper">
+													<img src="img/shoe-800x800-3.png" alt="Super Sport Shoes" class="img-fluid" />
+												</div>
+											</div>
+											<div class="col-4">
+												<div class="product-thumb-wrapper">
+													<img src="img/shoe-800x800-4.png" alt="Super Sport Shoes" class="img-fluid" />
+												</div>
+											</div>
+											<div class="col-4">
+												<div class="product-thumb-wrapper">
+													<img src="" alt="Super Sport Shoes" class="img-fluid" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-7 my-3 my-lg-0">
+										<h1 class="h3"></h1>
+										<div class="text-muted mt-3 fw-light"></div>
+										<div class="mt-3">Prezzo:</div>
+										<div class="h4"></div>
+										
+										<!-- <div class="mt-3">Color:</div>
+										<div class="product-colors">
+											<span class="red"></span>
+											<span class="orange active"></span>
+											<span class="purple"></span>
+											<span class="tiffany"></span>
+											<span class="sienna"></span>
+										</div>
+										<div class="mt-3">Sizes:</div>
+										<div class="product-sizes">
+											<span>38</span>
+											<span class="active">39</span>
+											<span>40</span>
+											<span>41</span>
+											<span>42</span>
+											<span>43</span>
+										</div> -->
+										
+										<!-- Quantity -->
+										<div class="d-flex mt-5">
+											<div class="d-inline-flex align-items-center me-3 quantity-wrapper">
+												<div class="sub"><i class="ri-subtract-line"></i></div>
+												<div class="amount" data-amount="1">1</div>
+												<div class="add"><i class="ri-add-line"></i></div>
+											</div>
+											<a href="javascript:void(0)" class="btn btn-dark add-to-card">Aggiungi al carrello <i class="ri-shopping-bag-line"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End Products Details -->
+
+			<div style="height: 82px;"></div>
+
+			<!-- Simillar Products -->
+			<section class="popular-products mt-5">
+  <div class="container">
+    <div class="row mb-3">
+      <div class="col">
+        <h3 class="h4 text-color-auto">Simillar Products:</h3>
+      </div>
+    </div>
+    <div class="row" id="similar-products-row">
+      <!-- Dynamic similar product cards will be inserted here by JS -->
+    </div>
+  </div>
+</section>
+<!-- End Simillar Products -->
+
+			<!-- Categories Section -->
+			<!-- <section class="categories mt-5">
+				<div class="container">
+					<div class="row mb-3">
+						<div class="col">
+							<h3 class="h4 text-color-auto">Our Collections:</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-lg-3">
+							<a href="collection.html" class="text-decoration-none">
+								<div class="bg-primary link-badge-wrapper p-5 rounded-lg text-white position-relative">
+									<span class="small">Made in Italy</span>
+									<div class="h5">Hiking Shoes</div>
+									<img src="img/category-800x400-1.png" alt="Collection Title" class="img-fluid" />
+									<span class="link-badge">
+										<i class="ri-arrow-right-s-line"></i>
+									</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-6 col-lg-3 mt-3 mt-md-0">
+							<a href="collection.html" class="text-decoration-none">
+								<div class="bg-warning link-badge-wrapper p-5 text-white rounded-lg position-relative">
+									<span class="small">Top Brands</span>
+									<div class="h5">Sport Collection</div>
+									<img src="img/category-800x400-2.png" alt="Collection Title" class="img-fluid" />
+									<span class="link-badge">
+										<i class="ri-arrow-right-s-line"></i>
+									</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-6 col-lg-3 mt-3 mt-lg-0">
+							<a href="collection.html" class="text-decoration-none">
+								<div class="bg-warning link-badge-wrapper p-5 text-white rounded-lg position-relative">
+									<span class="small">Nike</span>
+									<div class="h5">All Sneakers</div>
+									<img src="img/category-800x400-3.png" alt="Collection Title" class="img-fluid" />
+									<span class="link-badge">
+										<i class="ri-arrow-right-s-line"></i>
+									</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-6 col-lg-3 mt-3 mt-lg-0">
+							<a href="collection.html" class="text-decoration-none">
+								<div class="bg-warning link-badge-wrapper p-5 text-white rounded-lg position-relative">
+									<span class="small">Raising Stars</span>
+									<div class="h5">Summer Shoes</div>
+									<img src="img/category-800x400-4.png" alt="Collection Title" class="img-fluid" />
+									<span class="link-badge">
+										<i class="ri-arrow-right-s-line"></i>
+									</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section> -->
+			<!-- End Categories Section -->
+
+		</main>
+
+		<!-- Footer -->
+		<footer class="mt-5 mb-lg-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6" id="store-contact"><!-- Contatti dinamici --></div>
+      <div class="col-md-6 text-md-end mt-3 mt-lg-0">
+        <ul class="list-unstyled" id="footer-links">
+          <li><a href="#" class="text-color-auto text-decoration-none">Politica di spedizione</a></li>
+          <li><a href="#" class="text-color-auto text-decoration-none">Politica di reso</a></li>
+          <li><a href="custom.html" class="text-color-auto text-decoration-none" id="custom-link-footer"></a></li>
+        </ul>
+        <div class="text-color-auto" id="footer-socials"></div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- End Footer -->
+
+		<!-- Currency Toggler -->
+		<div class="dropend d-none d-lg-block">
+			<div id="currency_toggle" class="dropdown-toggle currency-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button">
+			  USD
+			</div>
+			<ul class="dropdown-menu" aria-labelledby="currency_toggle">
+				<li><a class="dropdown-item" href="#">USD</a></li>
+				<li><a class="dropdown-item" href="#">CAD</a></li>
+				<li><a class="dropdown-item" href="#">AUD</a></li>
+			</ul>
+		</div>
+		<!-- End Currency Toggler -->
+
+		<!-- Dark Mode Toggler -->
+		<div class="dark-mode-toggle">
+			<input class="toggler toggler-light" id="dm_toggle" type="checkbox"/>
+			<label class="toggler-btn" for="dm_toggle"></label>
+		</div>
+		<!-- End Dark Mode Toggler -->
+
+		<!-- Social Media Links -->
+		<div class="social-media text-center my-3 my-lg-0">
+			<a href="#" target="_blank" rel="noopener" class="text-decoration-none text-color-auto"><i class="ri-facebook-fill"></i></a>
+			<a href="#" target="_blank" rel="noopener" class="text-decoration-none text-color-auto"><i class="ri-twitter-line"></i></a>
+			<a href="#" target="_blank" rel="noopener" class="text-decoration-none text-color-auto"><i class="ri-instagram-line"></i></a>
+			<a href="#" target="_blank" rel="noopener" class="text-decoration-none text-color-auto"><i class="ri-whatsapp-line"></i></a>
+		</div>
+		<!-- End Social Media Links -->
+
+
+		<!-- Search Modal -->
+		<div class="modal fade search-modal" id="search_modal" tabindex="-1" aria-labelledby="search_label" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content border-0 rounded-lg pt-4">
+					<div class="modal-body p-3 p-lg-5">
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						<div class="row justify-content-center">
+							<div class="col-md-7 mt-4 text-center">
+								<form action="#" method="post">
+									<label for="search_input" id="search_label" class="visually-hidden">Search</label>
+									<input type="search" class="form-control text-center border-0 border-bottom" id="search_input" placeholder="What are you looking for?" required />
+								</form>
+							</div>
+						</div>
+						<div class="row justify-content-center text-center">
+							<div class="col-md-8">
+								<div class="mt-3 mt-lg-5">Popular Searches:</div>
+								<div class="mt-2">
+									<a href="#" class="tag-outline">Nike</a>
+									<a href="#" class="tag-outline">Running Shoes</a>
+									<a href="#" class="tag-outline">Sneakers</a>
+									<a href="#" class="tag-outline">2022</a>
+									<a href="#" class="tag-outline">Boots</a>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-2 mt-lg-4">
+							<div class="col-md-4">
+								<a href="#" class="text-decoration-none">
+									<div class="link-badge-wrapper bg-warning p-4 rounded-lg text-white position-relative">
+										<span class="small">Made in Italy</span>
+										<div class="h5">Hiking Shoes</div>
+										<img src="img/slider-800x400-1.png" alt="Hiking Shoes" class="img-fluid" />
+										<span class="link-badge">
+											<i class="ri-arrow-right-s-line"></i>
+										</span>
+									</div>
+								</a>
+							</div>
+							<div class="col-md-4 mt-3 mt-md-0">
+								<a href="#" class="text-decoration-none">
+									<div class="link-badge-wrapper bg-danger p-4 rounded-lg text-white position-relative">
+										<span class="small">For sporters</span>
+										<div class="h5">Running Shoes</div>
+										<img src="img/slider-800x400-2.png" alt="Hiking Shoes" class="img-fluid" />
+										<span class="link-badge">
+											<i class="ri-arrow-right-s-line"></i>
+										</span>
+									</div>
+								</a>
+							</div>
+							<div class="col-md-4 mt-3 mt-md-0">
+								<a href="#" class="text-decoration-none">
+									<div class="link-badge-wrapper bg-success p-4 rounded-lg text-white position-relative">
+										<span class="small">Feel comfort</span>
+										<div class="h5">Sneakers</div>
+										<img src="img/slider-800x400-3.png" alt="Hiking Shoes" class="img-fluid" />
+										<span class="link-badge">
+											<i class="ri-arrow-right-s-line"></i>
+										</span>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Search Modal -->
+
+		<!-- Cart Modal -->
+		<div class="modal fade cart-modal" id="cart_modal" tabindex="-1" aria-labelledby="cart_label" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content border-0 rounded-lg">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cart_label">Carrello</h5>
+        <span class="small text-muted ms-2" id="cart-items-count">(0 Articoli)</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="cart-items-list">
+        <div class="text-center text-muted">Il carrello è vuoto.</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger rounded-pill flex-grow-1" id="checkout-btn">Completa Ordine <i class="ri-check-double-line ri-middle ps-1"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+		<!-- End Cart Modal -->
+
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/bootstrap.bundle.min.js"></script>
+
+		<!-- Jquery Zoom -->
+		<script src="js/jquery.zoom.min.js"></script>
+
+		<!-- Jquery Toast -->
+		<script src="js/jquery.toast.min.js"></script>
+
+		<script src="js/main.js"></script>
+		<script type="module">
+    import config from "./site-config.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getFirestore, doc, getDoc, collection, getDocs, query, where, limit } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+    // Set shop name in navbar
+    document.querySelectorAll('.navbar-brand').forEach(el => el.textContent = config.storeName || 'Vetrina');
+    // Cart key per site
+    const siteId = config.siteId;
+    const cartKey = `cart_${siteId}`;
+    let cart = JSON.parse(localStorage.getItem(cartKey) || '{}');
+    function updateCartCount() {
+      const count = Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
+      document.querySelectorAll('.item-badge').forEach(el => el.textContent = count);
+    }
+    function showToast(msg) {
+      if (window.$ && $.toast) {
+        $.toast({ text: msg, position: 'top-right', loader: false, hideAfter: 2000, bgColor: '#222', textColor: '#fff' });
+      }
+    }
+    // Get product id from URL
+    function getProductId() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('id');
+    }
+    // Firestore setup
+    const app = initializeApp(config.firebaseConfig);
+    const db = getFirestore(app);
+    // Render product details
+    async function renderProduct() {
+      const productId = getProductId();
+      if (!productId) return;
+      const ref = doc(db, "products", siteId, "items", productId);
+      const snap = await getDoc(ref);
+      if (!snap.exists()) return;
+      const product = snap.data();
+      // Main image
+      const mainImg = document.querySelector('.product-image-wrapper img');
+      mainImg.src = product.image_path || 'img/shoe-800x800-1.png';
+      mainImg.alt = product.name;
+      // Set zoom/hover image to match
+      const zoomWrapper = document.querySelector('.product-image-wrapper');
+      if (zoomWrapper) zoomWrapper.setAttribute('data-src', product.image_path || 'img/shoe-800x800-1.png');
+      // Thumbnails
+      const thumbs = [product.image_path1, product.image_path2, product.image_path3];
+      document.querySelectorAll('.row.mt-3 .product-thumb-wrapper').forEach((wrapper, i) => {
+        const img = wrapper.querySelector('img');
+        if (thumbs[i]) {
+          img.src = thumbs[i];
+          img.alt = product.name;
+          wrapper.style.display = '';
+        } else {
+          wrapper.style.display = 'none';
+        }
+      });
+      // Title
+      document.querySelector('h1.h3').textContent = product.name;
+      // Price
+      document.querySelector('.h4').textContent = `€${product.price}`;
+      // Description
+      document.querySelector('.text-muted.mt-3.fw-light').textContent = product.description || '';
+      // Quantity logic
+      let selectedQty = 1;
+      const qtyElem = document.querySelector('.amount[data-amount]');
+      if (qtyElem) {
+        qtyElem.textContent = '1'; // Always reset to 1 on product load
+        selectedQty = 1;
+        // Remove previous event handlers by replacing the nodes
+        const subBtn = document.querySelector('.sub');
+        const addBtn = document.querySelector('.add');
+        const addToCartBtn = document.querySelector('.add-to-card');
+        if (subBtn) {
+          const newSub = subBtn.cloneNode(true);
+          subBtn.parentNode.replaceChild(newSub, subBtn);
+          newSub.onclick = () => {
+            let val = parseInt(qtyElem.textContent) || 1;
+            if (val > 1) val--;
+            qtyElem.textContent = val;
+            selectedQty = val;
+          };
+        }
+        if (addBtn) {
+          const newAdd = addBtn.cloneNode(true);
+          addBtn.parentNode.replaceChild(newAdd, addBtn);
+          newAdd.onclick = () => {
+            let val = parseInt(qtyElem.textContent) || 1;
+            val++;
+            qtyElem.textContent = val;
+            selectedQty = val;
+          };
+        }
+        if (addToCartBtn) {
+          const newAddToCart = addToCartBtn.cloneNode(true);
+          addToCartBtn.parentNode.replaceChild(newAddToCart, addToCartBtn);
+          newAddToCart.onclick = () => {
+            const productId = getProductId();
+            if (!cart[productId]) cart[productId] = { ...product, id: productId, qty: 0 };
+            cart[productId].qty += selectedQty;
+            localStorage.setItem(cartKey, JSON.stringify(cart));
+            updateCartCount();
+            showToast('Aggiunto al carrello!');
+            renderCart();
+            qtyElem.textContent = '1';
+            selectedQty = 1;
+          };
+        }
+      }
+      // Add to cart button
+      document.querySelector('.add-to-card').onclick = () => {
+        const productId = getProductId();
+        if (!cart[productId]) cart[productId] = { ...product, id: productId, qty: 0 };
+        cart[productId].qty += selectedQty;
+        localStorage.setItem(cartKey, JSON.stringify(cart));
+        updateCartCount();
+        showToast('Aggiunto al carrello!');
+        renderCart();
+        qtyElem.textContent = '1';
+        selectedQty = 1;
+      };
+      // Re-initialize zoom if needed
+      if (window.$ && $.fn.zoom) {
+        $('.product-image-wrapper').trigger('zoom.destroy');
+        $('.product-image-wrapper').zoom();
+      }
+
+      // Hide Similar Products section by default
+      const similarSection = document.querySelector('.popular-products');
+      if (similarSection) similarSection.style.display = 'none';
+
+      // After rendering main product, fetch similar products
+      if (similarSection) {
+        // Clear previous similar products
+        similarSection.querySelector('.row.mb-3').style.display = 'none';
+        const similarRow = document.getElementById('similar-products-row');
+        if (similarRow) similarRow.innerHTML = '';
+        // Fetch up to 4 products (including current), then filter in JS
+        const q = query(collection(db, "products", siteId, "items"), limit(4));
+        const querySnapshot = await getDocs(q);
+        let count = 0;
+        querySnapshot.forEach(docSnap => {
+          const p = docSnap.data();
+          // Use docSnap.id for correct product id
+          const pId = docSnap.id;
+          if (pId !== productId && count < 3) {
+            count++;
+            const card = document.createElement('div');
+            card.className = 'col-md-4' + (count > 1 ? ' mt-3 mt-md-0' : '');
+            card.innerHTML = `
+              <div class="product-card bg-white">
+                <div class="card-body p-4">
+                  <div class="actions d-flex justify-content-end">
+                    <div class="add-to-card mx-2" style="cursor:pointer;">
+                      <i class="ri-shopping-bag-fill"></i>
+                      <svg height="32" width="32"><circle class="circle" cx="16" cy="16" r="14" stroke="black" stroke-width="2" fill-opacity="0" /></svg>
+                    </div>
+                  </div>
+                  <div class="card-image px-5 py-3 px-md-0 py-md-0 px-lg-5 py-lg-3">
+                    <a href="product.html?id=${pId}"><img src="${p.image_path || 'img/shoe-800x800-1.png'}" alt="${p.name}" class="img-fluid" /></a>
+                  </div>
+                  <div class="pt-4 text-center position-relative">
+                    <div class="card-label">
+                      <a href="product.html?id=${pId}" class="link-dark text-decoration-none"><div class="card-title h5 text-capitalize">${p.name}</div></a>
+                      <div class="card-price text-danger">€${p.price}</div>
+                    </div>
+                    <div class="card-desc text-muted small fw-light mt-3 text-truncate">${p.description || ''}</div>
+                  </div>
+                </div>
+              </div>
+            `;
+            if (similarRow) similarRow.appendChild(card);
+            // Attach add-to-cart event for this card
+            const addBtn = card.querySelector('.add-to-card');
+            if (addBtn) {
+              addBtn.onclick = () => {
+                if (!cart[pId]) cart[pId] = { ...p, id: pId, qty: 0 };
+                cart[pId].qty++;
+                localStorage.setItem(cartKey, JSON.stringify(cart));
+                updateCartCount();
+                showToast('Aggiunto al carrello!');
+                renderCart();
+              };
+            }
+          }
+        });
+        if (count > 0) {
+          similarSection.style.display = '';
+          similarSection.querySelector('.row.mb-3').style.display = '';
+        } else {
+          similarSection.style.display = 'none';
+        }
+      }
+    }
+    renderProduct();
+    updateCartCount();
+    renderCart(); // Ensure cart total is correct on page load
+
+    // Cart logic (shared with index.html)
+function renderCart() {
+  const cartList = document.getElementById('cart-items-list');
+  const items = Object.values(cart);
+  let total = 0;
+  if (!items.length) {
+    cartList.innerHTML = "<div class='text-center text-muted'>Il carrello è vuoto.</div>";
+    document.querySelectorAll('.cart-amount').forEach(el => el.textContent = '€0.00');
+  } else {
+    cartList.innerHTML = items.map(item => {
+      total += (parseFloat(item.price) || 0) * item.qty;
+      return `<div class='row cart-item mb-2'><div class='col-3'><div class='product-thumb-wrapper'><img src='${item.image_path || 'img/shoe-800x800-1.png'}' alt='${item.name}' class='img-fluid' /></div></div><div class='col-9 position-relative pe-4'><div>${item.name}</div><div class='text-muted small'>${item.qty} x €${item.price}</div><div class='close bg-secondary' style='cursor:pointer;' data-id='${item.id}'><i class='ri-close-line'></i></div></div></div>`;
+    }).join("");
+    // Remove item event
+    cartList.querySelectorAll('.close').forEach(btn => {
+      btn.onclick = () => {
+        const id = btn.getAttribute('data-id');
+        delete cart[id];
+        localStorage.setItem(cartKey, JSON.stringify(cart));
+        updateCartCount();
+        renderCart();
+      };
+    });
+    document.querySelectorAll('.cart-amount').forEach(el => el.textContent = `€${total.toFixed(2)}`);
+  }
+  updateCartCount();
+}
+document.querySelectorAll('.nav-cart').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    // Prevent double modal triggers
+    e.preventDefault();
+    e.stopPropagation();
+    renderCart();
+    const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('cart_modal'));
+    modal.show();
+  });
+});
+document.getElementById("checkout-btn").onclick = () => {
+  window.location.href = "checkout.html";
+};
+// Dynamic footer logic (same as index.html)
+(function renderFooter() {
+  // Contact info
+  const contact = config.contact || {};
+  let contactHtml = "";
+  if (contact.phone) contactHtml += `<div class='d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-phone-line'></i></div><a href='tel:${contact.phone}' class='text-color-auto text-decoration-none' rel='nofollow'>${contact.phone}</a></div>`;
+  if (contact.email) contactHtml += `<div class='mt-1 d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-mail-open-line'></i></div><a href='mailto:${contact.email}' class='text-color-auto text-decoration-none' rel='nofollow'>${contact.email}</a></div>`;
+  if (contact.address) contactHtml += `<div class='mt-1 d-flex align-items-center'><div class='icon-wrapper me-2'><i class='ri-map-2-line'></i></div><address class='d-inline-block mb-0 text-color-auto'>${contact.address}</address></div>`;
+  document.getElementById("store-contact").innerHTML = contactHtml;
+  // Custom link label
+  const customLabel = config.customPageLabel || 'Personalizzato';
+  document.getElementById("custom-link-footer").textContent = customLabel;
+  // Socials
+  const socials = (config.socials || []).map(s => `<a href='${s.url}' target='_blank' rel='noopener' class='text-decoration-none text-color-auto me-2'><i class='${s.icon}'></i></a>`).join("");
+  document.getElementById("footer-socials").innerHTML = socials;
+})();
+  </script>
+	</body>
+</html>
