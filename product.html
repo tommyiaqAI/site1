@@ -69,36 +69,28 @@
 
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-lg navbar-light mt-3">
-			<div class="container">
-				<a class="navbar-brand" id="store-name" href="index.html">Caricamento negozio...</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link" href="info.html">Info</a>
-					</ul>
-
-
-					<!-- Cart Button -->
-					<div class="nav-cart me-lg-3 mt-3 mt-lg-0" data-bs-toggle="modal" data-bs-target="#cart_modal">
-						<div class="cart-icon order-lg-2 me-2 me-lg-0">
-							<i class="ri-shopping-bag-fill"></i>
-							<div class="item-badge">3</div>
-						</div>
-						<div class="cart-amount order-lg-1 me-lg-2">$85.00</div>
-					</div>
-					<!-- End Cart Button -->
-
-					<!-- Search Button -->
-					<div class="nav-search mt-3 mt-lg-0" data-bs-toggle="modal" data-bs-target="#search_modal">
-						<i class="ri-search-line"></i>
-					</div>
-					<!-- End Search Button -->
-				</div>
-			</div>
-		</nav>
+  <div class="container">
+    <a class="navbar-brand" id="store-name" href="index.html">Caricamento negozio...</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Cart Button: always visible -->
+    <div class="nav-cart ms-auto me-lg-3 mt-3 mt-lg-0 order-lg-2" data-bs-toggle="modal" data-bs-target="#cart_modal" style="cursor:pointer;">
+      <div class="cart-icon order-lg-2 me-2 me-lg-0">
+        <i class="ri-shopping-bag-fill"></i>
+        <div class="item-badge">3</div>
+      </div>
+      <div class="cart-amount order-lg-1 me-lg-2">$85.00</div>
+    </div>
+    <div class="collapse navbar-collapse order-lg-1" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="info.html">Info</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 		<!-- End Navbar -->
 
 		<main>
@@ -181,7 +173,7 @@
   <div class="container">
     <div class="row mb-3">
       <div class="col">
-        <h3 class="h4 text-color-auto">Simillar Products:</h3>
+        <h3 class="h4 text-color-auto">Altri Prodotti:</h3>
       </div>
     </div>
     <div class="row" id="similar-products-row">
@@ -419,7 +411,7 @@
     }
     function showToast(msg) {
       if (window.$ && $.toast) {
-        $.toast({ text: msg, position: 'top-right', loader: false, hideAfter: 2000, bgColor: '#222', textColor: '#fff' });
+        $.toast({ text: msg, position: 'bottom-right', loader: false, hideAfter: 2000, bgColor: '#222', textColor: '#fff' });
       }
     }
     // Get product id from URL
