@@ -21,7 +21,7 @@ export default {
     phone: "+39 3343357532",
     address: "Contrada Salinella, 1, 88835 Roccabernarda (KR), Italia",
     mapPlaceId: "ChIJEb3boPVrQBMRCEfLL6zmGO8", // Esempio Place ID Google Maps
-    iban: "IT60X0542811101000000123456",
+    iban: "IT77Q0709171290000000159337",
   },
   firebaseConfig: {
     apiKey: "AIzaSyAdFeVtKdb5oczNANmYPOeTkf2WbP_ruqg",
