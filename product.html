@@ -1,6 +1,46 @@
 <!doctype html>
 <html lang="en">
-	<head>
+		<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<style>
+		/* Fixed height for product card images - responsive */
+		.product-card .card-image {
+			height: 200px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+		}
+		
+		/* Larger height on tablets and desktop */
+		@media (min-width: 768px) {
+			.product-card .card-image {
+				height: 280px;
+			}
+		}
+		
+		.product-card .card-image img {
+			max-height: 100%;
+			max-width: 100%;
+			object-fit: contain;
+			width: auto;
+			height: auto;
+		}
+		
+		/* Main product image sizing */
+		.product-image-wrapper {
+			max-width: 400px;
+			margin: 0 auto;
+		}
+		
+		.product-image-wrapper img {
+			width: 100%;
+			height: auto;
+		}
+	</style>
+
+	<!-- Facebook OG Tags -->>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<title>Little Shopper | HTML5 E-Commerce Template | Product</title>
